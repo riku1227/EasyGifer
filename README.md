@@ -1,4 +1,5 @@
 # Easy Gifer
+### [ダウンロード](https://github.com/riku1227/EasyGifer/releases/download/v1.0.0/EasyGifer.zip)
 > 動画からGIFへ変換に特化したFFmpegとGifsicleを超簡易的に使えるWindows向けGUIソフト  
 > ※FFmpegとGifsicleのexeが必要です  
 > ![ss1](https://raw.githubusercontent.com/riku1227/EasyGifer/screenshot/ss.png)  
