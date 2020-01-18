@@ -80,6 +80,14 @@ namespace EasyGifer
             {
                 return;
             }
+            if(viewModel.InpuPath == "")
+            {
+                return;
+            }
+            if(!File.Exists(viewModel.InpuPath))
+            {
+                return;
+            }
             nowProcessing = true;
             optimizeOutPaht = viewModel.OutputPath;
             if(OptimizeGif.IsChecked == true)
