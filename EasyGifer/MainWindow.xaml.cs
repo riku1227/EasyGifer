@@ -4,6 +4,7 @@ using System.Windows;
 using System.IO;
 using Microsoft.Win32;
 using System.Windows.Input;
+using System.Windows.Controls;
 
 namespace EasyGifer
 {
@@ -20,6 +21,16 @@ namespace EasyGifer
         public MainWindow()
         {
             InitializeComponent();
+            RegistryKey rkey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize");
+            if(rkey != null)
+            {
+                var useLightTheme = (int)rkey.GetValue("AppsUseLightTheme");
+                if(useLightTheme == 0)
+                {
+                    var themeManager = new ThemeManager(this);
+                    themeManager.SetUpTheme();
+                }
+            }
             this.DataContext = viewModel;
         }
 
