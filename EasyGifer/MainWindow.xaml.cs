@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.IO;
 using Microsoft.Win32;
+using System.Windows.Input;
 
 namespace EasyGifer
 {
@@ -14,6 +15,8 @@ namespace EasyGifer
         private MainWindowViewModel viewModel = new MainWindowViewModel();
         private const String FFMPEG_PATH= @"lib\ffmpeg.exe";
         private const String GIFSICLE_PAHT = @"lib\gifsicle.exe";
+        private String optimizeOutPaht = "";
+        private Boolean nowProcessing = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -22,25 +25,31 @@ namespace EasyGifer
 
         private void InputFileButton_Click(object sender, RoutedEventArgs e)
         {
-            var openFileDialog = new OpenFileDialog();
-            var result = openFileDialog.ShowDialog();
-            if(result == true)
+            if(!nowProcessing)
             {
-                viewModel.InpuPath = openFileDialog.FileName;
-                notifyInputPathChanged();
+                var openFileDialog = new OpenFileDialog();
+                var result = openFileDialog.ShowDialog();
+                if (result == true)
+                {
+                    viewModel.InpuPath = openFileDialog.FileName;
+                    notifyInputPathChanged();
+                }
             }
         }
 
         private void OutputFileButton_Click(object sender, RoutedEventArgs e)
         {
-            var openFileDialog = new SaveFileDialog();
-            openFileDialog.Filter = "gif|*.gif";
-            openFileDialog.AddExtension = true;
-            var result = openFileDialog.ShowDialog();
-            if (result == true)
+            if(!nowProcessing)
             {
-                viewModel.OutputPath = openFileDialog.FileName;
-                notifyOutputPathChanged();
+                var openFileDialog = new SaveFileDialog();
+                openFileDialog.Filter = "gif|*.gif";
+                openFileDialog.AddExtension = true;
+                var result = openFileDialog.ShowDialog();
+                if (result == true)
+                {
+                    viewModel.OutputPath = openFileDialog.FileName;
+                    notifyOutputPathChanged();
+                }
             }
         }
 
@@ -56,13 +65,19 @@ namespace EasyGifer
 
         private void GenerateGifButton_Click(object sender, RoutedEventArgs e)
         {
-            String optimizeOutPaht = viewModel.OutputPath;
+            if(nowProcessing)
+            {
+                return;
+            }
+            nowProcessing = true;
+            optimizeOutPaht = viewModel.OutputPath;
             if(OptimizeGif.IsChecked == true)
             {
                 viewModel.OutputPath = viewModel.OutputPath.Replace(".gif", "_temp.gif");
             }
             if(!File.Exists(AppDomain.CurrentDomain.BaseDirectory + FFMPEG_PATH))
             {
+                nowProcessing = false;
                 return;
             }
             ProcessStartInfo pInfo = new ProcessStartInfo();
@@ -84,22 +99,39 @@ namespace EasyGifer
             pInfo.Arguments = argments;
 
             var process = Process.Start(pInfo);
-            process.WaitForExit();
+            process.EnableRaisingEvents = true;
+            process.Exited += new EventHandler(onFFMPEGExit);
+        }
 
-            if(OptimizeGif.IsChecked == true)
+        private void onFFMPEGExit(object sender, EventArgs e)
+        {
+            this.Dispatcher.Invoke((Action)(() =>
             {
-                if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + GIFSICLE_PAHT))
+                if (OptimizeGif.IsChecked == true)
                 {
-                    return;
+                    if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + GIFSICLE_PAHT))
+                    {
+                        return;
+                    }
+                    ProcessStartInfo optimizePInfo = new ProcessStartInfo();
+                    optimizePInfo.FileName = AppDomain.CurrentDomain.BaseDirectory + GIFSICLE_PAHT;
+                    optimizePInfo.Arguments = "-O3 --lossy=80 -o \"" + optimizeOutPaht + "\" " + "\"" + viewModel.OutputPath + "\"";
+                    var optimizeProcess = Process.Start(optimizePInfo);
+                    optimizeProcess.EnableRaisingEvents = true;
+                    optimizeProcess.Exited += new EventHandler(onGifsicleExit);
+                } 
+                else
+                {
+                    nowProcessing = false;
                 }
-                ProcessStartInfo optimizePInfo = new ProcessStartInfo();
-                optimizePInfo.FileName = AppDomain.CurrentDomain.BaseDirectory + GIFSICLE_PAHT;
-                optimizePInfo.Arguments = "-O3 --lossy=80 -o \"" + optimizeOutPaht + "\" " + "\"" + viewModel.OutputPath + "\"";
-                var optimizeProcess = Process.Start(optimizePInfo);
-                optimizeProcess.WaitForExit();
-                File.Delete(viewModel.OutputPath);
-                viewModel.OutputPath = optimizeOutPaht;
-            }
+            }));
+        }
+
+        private void onGifsicleExit(object sender, EventArgs args)
+        {
+            File.Delete(viewModel.OutputPath);
+            viewModel.OutputPath = optimizeOutPaht;
+            nowProcessing = false;
         }
 
         private String CreateLowArgments()
