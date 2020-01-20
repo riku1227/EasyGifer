@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#9c27b0">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://riku1227.github.io/css/materialy.min.css">
+  <title>Easy Gifer - RiFun</title>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@_riku1227_" />
+  <meta property="og:site_name" content="RiFun" />
+  <meta property="og:title" content="Easy Gifer - RiFun" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://riku1227.github.io/easygifer/index.html" />
+  <meta property="og:image" content="https://riku1227.github.io/easygifer/images/cover_image.png" />
+  <meta property="og:description" content="動画からGIFに変換することに特化したFFmpegをGUIで操作できるWindows向けソフト" />
+  <script src="https://unpkg.com/freezeframe/dist/freezeframe.min.js"></script>
+</head>
+
+<body ontouchstart="">
+  <header class="materialy-app-bar-top"></header>
+  <nav class="materialy-navigation-drawer"></nav>
+  <label class="materialy-navigation-drawer__modal--scrim" for="materialy-app-bar-top--checkbox"></label>
+
+  <main class="materialy-content materialy-layout--center">
+    <div
+      class="materialy-layout--linearlayout__vertical__full materialy-layout--content-center materialy-layout--padding-top-bottom-16">
+      <div class="materialy-card__fit__no-radius">
+          <p class="materialy-card--title">Easy Gifer</p>
+          <p class="materialy-card--subtitle">動画からGIFに変換することに特化したFFmpegをGUIで操作できるWindows向けソフト</p>
+          <div class="materialy-layout--slide">
+            <img loading="lazy" style="width: 320px;" src="images/ss.png"/>
+            <img loading="lazy" style="width: 320px;" src="images/ss_dark.png"/>
+          </div>
+          <p class="materialy-card--subtitle">機能一覧</p>
+          <p class="materialy-card--text">・入力ファイル, 出力ファイルを選択するだけで、動画からGIFに変換することができます。</p>
+          <p class="materialy-card--text">・GIFの解像度を設定(横幅を指定すれば自動的に縦幅も指定されます)</p>
+          <p class="materialy-card--text">・GIFのフレームレートを設定</p>
+          <p class="materialy-card--text">・GIFのクオリティを設定</p>
+          <p class="materialy-card--text">動画によっては低の方がファイルサイズが大きくなったりします</p>
+          <p class="materialy-card--text">・Gifsicleを使用したGIFの最適化</p>
+          <p class="materialy-card--text">最高クオリティとの相性は悪いです</p>
+          <p class="materialy-card--text">・ダークテーマをサポート</p>
+          <p class="materialy-card--text">起動時のOSのテーマ設定によって自動的に有効化されます</p>
+      </p>
+    </div>
+    <div class="materialy-layout--space"></div>
+    <div class="materialy-card__fit__no-radius">
+      <p class="materialy-card--title">ダウンロード</p>
+      <div style="padding-left: 8px; padding-right: 8px;">
+        <a class="materialy-button--outline__accent" href="https://github.com/riku1227/EasyGifer/releases/latest" target="_blank">Easy Gifer</a>
+        <p class="materialy-card--text">EasyGifer.zipをダウンロードしてください</p>
+        <a class="materialy-button--outline__accent" href="https://ffmpeg.zeranoe.com/builds/" target="_blank">FFmpeg</a>
+        <p class="materialy-card--text">FFmpegはStatic版を使用してください(デフォルトで選択されてます)</p>
+        <p class="materialy-card--text">バージョンは4.2.1で確認しています</p>
+        <a class="materialy-button--outline__accent" href="https://eternallybored.org/misc/gifsicle/" target="_blank">Gifsicle</a>
+        <p class="materialy-card--text">gifsicle-x.xx-winXX.zipをダウンロードしてください</p>
+      </div>
+      </div>
+    </div>
+    <div class="materialy-layout--space"></div>
+    <div class="materialy-card__fit__no-radius">
+      <p class="materialy-card--title">インストール方法</p>
+      <p class="materialy-card--subtitle">1. 必要なファイルのダウンロード</p>
+      <img loading="lazy" class="materialy-card--media" src="images/how_to_install/download_01.png">
+      <p class="materialy-card--text">EasyGifer.zipをクリックするとダウンロードできます</p>
+      <img loading="lazy" class="materialy-card--media" src="images/how_to_install/download_02.png">
+      <p class="materialy-card--text">基本的にバージョンは下の方推奨です</p>
+      <p class="materialy-card--text">Architectureはお使いのOSに合ったものを選択してください</p>
+      <p class="materialy-card--text">LinkingはStaticを選択してください</p>
+      <img loading="lazy" class="materialy-card--media" src="images/how_to_install/download_03.png">
+      <p class="materialy-card--text">win32 / win64 はお使いのOSに合ったものダウンロードしてください</p>
+      <p class="materialy-card--subtitle">2. ファイルの配置</p>
+      <p class="materialy-card--text">ダウンロードしたファイルをすべて解凍してください</p>
+      <img loading="lazy" class="materialy-card--media" src="images/how_to_install/install_01.png">
+      <p class="materialy-card--text">libの中に必要なファイルを設置します</p>
+      <div class="materialy-layout--space"></div>
+      <div class="materialy-dividers"></div>
+      <div class="materialy-layout--space"></div>
+      <img loading="lazy" class="materialy-card--media" src="images/how_to_install/install_02.png">
+      <p class="materialy-card--text">FFmpegのフォルダを進むとこのような感じのフォルダがあるので、binの中に入ってください</p>
+      <img loading="lazy" class="materialy-card--media" src="images/how_to_install/install_03.png">
+      <p class="materialy-card--text">その中にあるffmpeg.exeをEasyGiferのlibの中に入れてください</p>
+      <div class="materialy-layout--space"></div>
+      <div class="materialy-dividers"></div>
+      <div class="materialy-layout--space"></div>
+      <img loading="lazy" class="materialy-card--media" src="images/how_to_install/install_04.png">
+      <p class="materialy-card--text">gifsicleも進むとこのようなファイルがあるので、gifsicle.exeをEasyGiferのlibの中に入れてください</p>
+      <div class="materialy-layout--space"></div>
+      <div class="materialy-dividers"></div>
+      <div class="materialy-layout--space"></div>
+      <img loading="lazy" class="materialy-card--media" src="images/how_to_install/install_05.png">
+      <p class="materialy-card--text">EasyGiferのlibの中がこのような感じになればインストール完了です</p>
+    </div>
+    <div class="materialy-layout--space"></div>
+    <div class="materialy-card__fit__no-radius">
+        <p class="materialy-card--title">サンプル</p>
+        <p class="materialy-card--subtitle">クリックで再生できます</p>
+        <img loading="lazy" class="freezeframe materialy-card--media" src="gifs/vrchat_high.gif">
+        <p class="materialy-card--subtitle">ファイルサイズ: 4.74MB</p>
+        <p class="materialy-card--subtitle">クオリティ: 高</p>
+        <p class="materialy-card--text">解像度: 512x512</p>
+        <p class="materialy-card--text">フレームレート: 15fps</p>
+        <p class="materialy-card--text">動画時間: 7秒</p>
+        <p class="materialy-card--text">GIFの最適化有効</p>
+        <p class="materialy-card--text">VRChat ID: riku1227</p>
+        <a class="materialy-button--outline__primary" href="gifs/vrchat_god_no_optimize.gif">最高クオリティの最適化無しはこちら(13.4MB)</a>
+        <div class="materialy-layout--space"></div>
+        <div class="materialy-dividers"></div>
+
+        <img loading="lazy" class="freezeframe materialy-card--media" src="gifs/minecraft_shader_low.gif">
+        <p class="materialy-card--subtitle">ファイルサイズ: 1.30MB</p>
+        <p class="materialy-card--subtitle">クオリティ: 低</p>
+        <p class="materialy-card--text">解像度: 512x288</p>
+        <p class="materialy-card--text">フレームレート: 15fps</p>
+        <p class="materialy-card--text">動画時間: 5秒</p>
+        <p class="materialy-card--text">GIFの最適化有効</p>
+        <div class="materialy-layout--space"></div>
+        <div class="materialy-dividers"></div>
+
+        <img loading="lazy" class="freezeframe materialy-card--media" src="gifs/minecraft_shader_middle.gif">
+        <p class="materialy-card--subtitle">ファイルサイズ: 1.95MB</p>
+        <p class="materialy-card--subtitle">クオリティ: 中</p>
+        <p class="materialy-card--text">解像度: 512x288</p>
+        <p class="materialy-card--text">フレームレート: 15fps</p>
+        <p class="materialy-card--text">動画時間: 5秒</p>
+        <p class="materialy-card--text">GIFの最適化有効</p>
+        <div class="materialy-layout--space"></div>
+        <div class="materialy-dividers"></div>
+
+        <img loading="lazy" class="freezeframe materialy-card--media" src="gifs/minecraft_shader_high.gif">
+        <p class="materialy-card--subtitle">ファイルサイズ: 2.94MB</p>
+        <p class="materialy-card--subtitle">クオリティ: 高</p>
+        <p class="materialy-card--text">解像度: 512x288</p>
+        <p class="materialy-card--text">フレームレート: 15fps</p>
+        <p class="materialy-card--text">動画時間: 5秒</p>
+        <p class="materialy-card--text">GIFの最適化有効</p>
+        <div class="materialy-layout--space"></div>
+        <div class="materialy-dividers"></div>
+
+        <img loading="lazy" class="freezeframe materialy-card--media" src="gifs/minecraft_shader_god_no_optimize.gif">
+        <p class="materialy-card--subtitle">ファイルサイズ: 7.05MB</p>
+        <p class="materialy-card--subtitle">クオリティ: 世界を犠牲にしてでも最高級のGIFを生成したい人向け</p>
+        <p class="materialy-card--text">解像度: 512x288</p>
+        <p class="materialy-card--text">フレームレート: 15fps</p>
+        <p class="materialy-card--text">動画時間: 5秒</p>
+        <p class="materialy-card--text">GIFの最適化無効</p>
+    </div>
+
+    <div class="materialy-layout--space"></div>
+
+    <div class="materialy-card__fit__no-radius">
+      <p class="materialy-card--title">ライセンス</p>
+      <div style="padding-left: 8px; padding-right: 8px;">
+        <a class="materialy-button--outline" href="https://github.com/ctrl-freaks/freezeframe.js/blob/master/LICENSE.txt" target="_blank">freezeframe.js</a>
+        <a class="materialy-button--outline" href="https://github.com/riku1227/materialy/blob/master/LICENSE" target="_blank">materialy</a>
+      </div>
+    </div>
+  </main>
+  <script src="https://riku1227.github.io/js/main.js"></script>
+  <script>
+    new Freezeframe({
+        selector: '.freezeframe',
+        trigger: 'click',
+        overlay: true,
+        responsive: false
+    });
+</script>
+</body>
+
+</html>
