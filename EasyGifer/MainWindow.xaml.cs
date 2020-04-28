@@ -69,6 +69,7 @@ namespace EasyGifer
             InputPathTextBox.Text = viewModel.InpuPath;
 
             OutputPathTextBox.Text = viewModel.InpuPath.Replace(Path.GetExtension(viewModel.InpuPath), ".gif");
+            viewModel.OutputPath = viewModel.InpuPath.Replace(Path.GetExtension(viewModel.InpuPath), ".gif");
         }
 
         private void notifyOutputPathChanged()
@@ -202,8 +203,10 @@ namespace EasyGifer
             if(files != null)
             {
                 InputPathTextBox.Text = files[0];
+                viewModel.InpuPath = files[0];
 
                 OutputPathTextBox.Text = files[0].Replace(Path.GetExtension(files[0]), ".gif");
+                viewModel.OutputPath = files[0].Replace(Path.GetExtension(files[0]), ".gif");
             }
         }
     }
