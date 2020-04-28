@@ -67,6 +67,8 @@ namespace EasyGifer
         private void notifyInputPathChanged()
         {
             InputPathTextBox.Text = viewModel.InpuPath;
+
+            OutputPathTextBox.Text = viewModel.InpuPath.Replace(Path.GetExtension(viewModel.InpuPath), ".gif");
         }
 
         private void notifyOutputPathChanged()
