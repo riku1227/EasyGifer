@@ -185,6 +185,25 @@ namespace EasyGifer
                 " -filter_complex \"[0:v] fps = " + viewModel.GifFps + ",scale = " + viewModel.GifWidth + ":-1,split[a][b];[a] palettegen=stats_mode=single [p];[b] [p] paletteuse=new=1\"" +
                 " \"" + viewModel.OutputPath + "\"";
         }
+
+        private void InputPathTextBox_PreviewDragOver(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.Copy;
+            e.Handled = e.Data.GetDataPresent(DataFormats.FileDrop);
+        }
+
+        private void InputPathTextBox_Drop(object sender, DragEventArgs e)
+        {
+            InputPathTextBox.Text = String.Empty;
+            string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
+
+            if(files != null)
+            {
+                InputPathTextBox.Text = files[0];
+
+                OutputPathTextBox.Text = files[0].Replace(Path.GetExtension(files[0]), ".gif");
+            }
+        }
     }
 }
 //clr-namespace:EasyGifer

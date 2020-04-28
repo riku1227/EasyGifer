@@ -362,7 +362,7 @@
             Grid.Column="0"
             Margin="4"
             VerticalContentAlignment="Center"
-            Text="{Binding InpuPath}" />
+            Text="{Binding InpuPath}" PreviewDragOver="InputPathTextBox_PreviewDragOver" Drop="InputPathTextBox_Drop" />
 
         <Button
             x:Name="InputFileButton"
